@@ -13,6 +13,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function Home() {
   const tags = [
@@ -43,7 +44,7 @@ export default function Home() {
       slogan: "Discover tomorrow's products today",
       description: "A platform for discovering new products and startups",
       category: "SaaS",
-      logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+      logo: "/arifpay.png",
       tags: ["Community", "Tech"],
       votes: 156,
       url: "https://producthunt.com",
@@ -53,7 +54,7 @@ export default function Home() {
       slogan: "Write smarter, not harder",
       description: "AI-powered writing tool for better content creation",
       category: "Tech",
-      logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+      logo: "/chapa.png",
       tags: ["AI/ML", "Productivity", "Content"],
       votes: 142,
       url: "https://producthunt.com",
@@ -63,7 +64,28 @@ export default function Home() {
       slogan: "Bringing remote teams closer together",
       description: "All-in-one platform for remote team collaboration",
       category: "Enterprise",
-      logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+      logo: "/yegara.png",
+      tags: ["Collaboration", "remote", "Team"],
+      votes: 98,
+      url: "https://producthunt.com",
+    },
+
+    {
+      name: "Remote Team Hub",
+      slogan: "Bringing remote teams closer together",
+      description: "All-in-one platform for remote team collaboration",
+      category: "Enterprise",
+      logo: "/hahucloud.png",
+      tags: ["Collaboration", "remote", "Team"],
+      votes: 98,
+      url: "https://producthunt.com",
+    },
+    {
+      name: "Remote Team Hub",
+      slogan: "Bringing remote teams closer together",
+      description: "All-in-one platform for remote team collaboration",
+      category: "Enterprise",
+      logo: "/hahucloud.png",
       tags: ["Collaboration", "remote", "Team"],
       votes: 98,
       url: "https://producthunt.com",
@@ -76,7 +98,7 @@ export default function Home() {
         <Hero />
       </div>
 
-      <main className="container mx-auto grid  grid-cols-1 md:grid-cols-4 gap-y-2 md:gap-x-2 p-2 min-h-screen">
+      <main className="bg-white container mx-auto grid  grid-cols-1 md:grid-cols-4 gap-y-2 md:gap-x-2 p-2 min-h-screen">
         <div className="col-span-3 order-1 md:order-none space-y-4 sm:mt-4">
           <div className="space-y-4">
             <h2 className="text-xl md:text-3xl font-bold">
@@ -100,14 +122,14 @@ export default function Home() {
               </Button>
             ))}
           </div>
-          <div className="space-y-4">
-            {products.map((product) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {products.map((product, index) => (
               <Card
-                key={product.name}
-                className="overflow-hidden  hover:shadow-lg hover:border-2 transition-shadow "
+                key={index}
+                className="overflow-hidden  hover:shadow-lg hover:border-2 transition-shadow height-[400px] rounded-2xl bg-white"
               >
-                <div className="flex items-center p-6">
-                  <div className="flex-shrink-0">
+                <div className="flex flex-col gap-4 items-center p-2">
+                  {/* <div className="flex-shrink-0">
                     <a
                       href={product.url}
                       target="_blank"
@@ -123,37 +145,23 @@ export default function Home() {
                         <ExternalLink className="h-6 w-6 text-white opacity-0 transition-opacity group-hover:opacity-100" />
                       </div>
                     </a>
+                  </div> */}
+                  <div className="border-none  md:h-[300px] w-[80%] bg-gray-50 rounded-2xl mt-4">
+                    <Image
+                      src={product.logo}
+                      alt={product.name}
+                      width={1852}
+                      height={962}
+                      quality={100}
+                      className="h-full w-full object-contain md:object-cover transition-opacity group-hover:opacity-80 rounded-2xl shadow-none"
+                    />
                   </div>
-                  <div className="ml-6 flex-grow">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="text-xl font-semibold">
-                          {product.name}
-                        </h3>
-                        <p className="text-muted-foreground mt-1">
-                          {product.slogan}
-                        </p>
-                      </div>
-                      {/* <div className="flex items-center space-x-2">
-                        <div className="flex items-center text-sm">
-                          <Briefcase className="h-4 w-4 mr-1" />
-                          {product.votes} votes
-                        </div>
-                        <Button variant="secondary" size="sm">
-                          Vote
-                        </Button>
-                      </div> */}
-                    </div>
-                    <div className="mt-4 flex items-center space-x-2">
-                      {product.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-xl font-semibold">{product.name}</h3>
+                    <p className="text-muted-foreground mt-1">
+                      {product.slogan}
+                    </p>
                   </div>
                 </div>
               </Card>
