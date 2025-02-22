@@ -2,7 +2,7 @@ import NavBar from "@/components/navbar";
 import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
-
+import Product from "@/components/product";
 import {
   Rocket,
   ShoppingBag,
@@ -10,10 +10,8 @@ import {
   Gamepad2,
   PenTool,
   Building2,
-  ExternalLink,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
 
 export default function Home() {
   const tags = [
@@ -60,11 +58,12 @@ export default function Home() {
       url: "https://producthunt.com",
     },
     {
-      name: "Remote Team Hub",
-      slogan: "Bringing remote teams closer together",
-      description: "All-in-one platform for remote team collaboration",
+      name: "Beu Delivery",
+      slogan: "Food delivery for everyone!",
+      description:
+        "The food you want, where you want it. The best restaurants in town and the fastest delivery guys eagerly waiting to serve you! All with a click of a buton.",
       category: "Enterprise",
-      logo: "/yegara.png",
+      logo: "/beudelivery.png",
       tags: ["Collaboration", "remote", "Team"],
       votes: 98,
       url: "https://producthunt.com",
@@ -81,11 +80,11 @@ export default function Home() {
       url: "https://producthunt.com",
     },
     {
-      name: "Remote Team Hub",
+      name: "hahu screenshot",
       slogan: "Bringing remote teams closer together",
       description: "All-in-one platform for remote team collaboration",
       category: "Enterprise",
-      logo: "/hahucloud.png",
+      logo: "/hahuscreenshot.jpg",
       tags: ["Collaboration", "remote", "Team"],
       votes: 98,
       url: "https://producthunt.com",
@@ -124,47 +123,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {products.map((product, index) => (
-              <Card
+              <Product
                 key={index}
-                className="overflow-hidden  hover:shadow-lg hover:border-2 transition-shadow height-[400px] rounded-2xl bg-white"
-              >
-                <div className="flex flex-col gap-4 items-center p-2">
-                  {/* <div className="flex-shrink-0">
-                    <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative block h-20 w-20 rounded-lg overflow-hidden bg-secondary"
-                    >
-                      <img
-                        src={product.logo}
-                        alt={product.name}
-                        className="h-full w-full object-cover transition-opacity group-hover:opacity-80"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/20">
-                        <ExternalLink className="h-6 w-6 text-white opacity-0 transition-opacity group-hover:opacity-100" />
-                      </div>
-                    </a>
-                  </div> */}
-                  <div className="border-none  md:h-[300px] w-[80%] bg-gray-50 rounded-2xl mt-4">
-                    <Image
-                      src={product.logo}
-                      alt={product.name}
-                      width={1852}
-                      height={962}
-                      quality={100}
-                      className="h-full w-full object-contain md:object-cover transition-opacity group-hover:opacity-80 rounded-2xl shadow-none"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-xl font-semibold">{product.name}</h3>
-                    <p className="text-muted-foreground mt-1">
-                      {product.slogan}
-                    </p>
-                  </div>
-                </div>
-              </Card>
+                name={product.name}
+                slogan={product.slogan}
+                logo={product.logo}
+              />
             ))}
           </div>
         </div>
